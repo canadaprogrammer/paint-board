@@ -181,3 +181,25 @@
     }
   });
   ```
+
+#### Save Canvas as Image
+
+- `HTMLCanvasElement.toDataURL()`
+
+  - This method returns a data URI containing a representation of the image in the format specified by the type parameter (defaults to PNG). The returned image is in a resolution of 96 dpi.
+
+  - `canvas.toDataURL(type, encoderOptions);`
+
+    - type(optional): A DOMString indicating the image format. The default format type is `image/png`.
+
+    - encoderOptions(optional): A Number between `0` an `1` indicating the image quality to use for image formats that use lossy compression such as `image/jpeg` and `image/webp`. The default value is `0.92`.
+
+- ```js
+  saveBtn.addEventListener('click', () => {
+    const image = canvas.toDataURL();
+    const link = document.createElement('a');
+    link.href = image;
+    link.download = 'paint';
+    link.click();
+  });
+  ```
